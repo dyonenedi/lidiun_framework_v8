@@ -24,6 +24,7 @@
 			self::$_path['class']       = self::$_path['app'] . 'class' . SEPARATOR;
 			self::$_path['conf']        = self::$_path['app'] . 'conf' . SEPARATOR;
 			self::$_path['controller']  = self::$_path['app'] . 'controller' . SEPARATOR;
+			self::$_path['view']        = self::$_path['app'] . 'view' . SEPARATOR;
 			self::$_path['layout']      = self::$_path['app'] . 'layout' . SEPARATOR;
 			self::$_path['model']       = self::$_path['app'] . 'model'  . SEPARATOR;
 			self::$_path['plugin']      = self::$_path['app'] . 'plugin'  . SEPARATOR;

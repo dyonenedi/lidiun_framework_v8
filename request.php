@@ -103,8 +103,9 @@
 		}
 
 		private static function _setAction(){
+			Autoload::includePath('controller' . SEPARATOR . self::$_controller);
+			Autoload::includePath('view' . SEPARATOR . self::$_controller);
 			if (empty(self::$_action) && !empty(self::$_parameter[0])) {
-				Autoload::includePath('controller' . SEPARATOR . self::$_controller);
 				$method = strtolower(self::$_parameter[0]);
 				$class  = self::$_controller.'_controller';
 				if ((int)method_exists($class, $method)) {

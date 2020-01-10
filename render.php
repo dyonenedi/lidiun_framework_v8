@@ -35,6 +35,7 @@
 		private static function runGlobalRende(){
 			$path = Path::getPath();
 			if (file_exists($path['controller'] . 'global_controller.php')) {
+				Autoload::includePath('plugin');
 				Autoload::includePath('controller');
 				$globalController = 'global_controller';
 				$globalController = new $globalController;

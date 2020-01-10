@@ -47,7 +47,7 @@
 			}
 
 			if (empty(self::$_conf['preset']['server'])) {
-				throw new \Exception('Fatal Error: The host "'.self::$_conf['host'].'" don\'t found in environment. Please check environment in config to fix this problem.');
+				throw new \Exception('Fatal Error: The host "'.self::$_conf['host'].'" don\'t found in environment. Please check environment in basic_config to fix this problem.');
 			}
 			
 			// Set debug mode
