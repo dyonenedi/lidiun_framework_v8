@@ -22,8 +22,9 @@
 			$protocol = strtolower($protocol[0]);
 			$protocol = $protocol . '://';
 
-			$host = Conf::$_conf['host'];
 			$port = (!empty($_SERVER['SERVER_PORT'])) ? ':' . $_SERVER['SERVER_PORT']: '';
+			$domain = Conf::$_conf['preset']['domain'];
+			$host = Conf::$_conf['host'];
 
 			$uri = (!empty($_GET['uri'])) ? $_GET['uri'] : false;
 			$uri = str_replace('/', ' ', $uri);
@@ -38,6 +39,7 @@
 			}
 
 			self::$_url['protocol'] = $protocol;
+			self::$_url['domain']   = $domain;
 			self::$_url['host']     = $host;
 			self::$_url['port']     = $port;
 			self::$_url['base']     = $protocol . $host . $port . '/';
