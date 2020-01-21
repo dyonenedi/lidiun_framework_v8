@@ -69,11 +69,11 @@
 			session_start();
 		}
 
-		public function setAditionalCss($css){
+		public static function setAditionalCss($css){
 			self::$_conf['additional_css'][] = $css; 
 		}
 
-		public function setAditionalJs($js){
+		public static function setAditionalJs($js){
 			self::$_conf['additional_js'][] = $js; 
 		}
 	}
