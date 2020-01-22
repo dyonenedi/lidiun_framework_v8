@@ -122,6 +122,10 @@
 		}
 
 		private static function _setDefaultHeader(){
+			if (!empty($_SERVER["HTTP_X_REQUESTED_WITH"]) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+			   self::$_ajax = true;
+			}
+			
 			self::$_webHeader = [
 				'Content-Type: text/html; charset=UTF-8',
 				'Access-Control-Allow-Methods: GET, POST',
