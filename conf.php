@@ -51,15 +51,15 @@
 			}
 			
 			// Set debug mode
-			self::$_conf['preset']['debug_mode'] = (self::$_conf['preset']['server'] == 'production') ? false : true;
-			if (self::$_conf['preset']['debug_mode'] || self::$_conf['preset']['force_debug']) {
+			self::$_conf['preset']['debug_mode'] = (isset(self::$_conf['preset']['force_debug'])) ? self::$_conf['preset']['force_debug'] : ((self::$_conf['preset']['server'] == 'production') ? false : true);
+			if (self::$_conf['preset']['debug_mode']) {
+				error_reporting(E_ALL);
 				ini_set('display_errors',1);
 				ini_set('display_startup_erros',1);
-				error_reporting(E_ALL);
 			} else {
+				error_reporting(0);
 				ini_set('display_errors',0);
 				ini_set('display_startup_erros',0);
-				error_reporting(0);
 			}
 
 			// Set time zone
