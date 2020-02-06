@@ -27,6 +27,7 @@
 		private static $_sql         = false;
 		private static $_result      = false;
 		private static $_autoCommit  = true;
+		public static $_timeExec     = [];
 
 		/**
 		* Connect with Database using mySqli object
@@ -72,13 +73,12 @@
 		*
 		*/
 		static public function query($_sql, $return='boolean') {
+			$time_start = microtime(true);
 			if (empty(self::$_con)) {
 				self::connect();
 			}
-
 			self::$_sql = $_sql;
 			self::$_result = self::$_con->query(self::$_sql);
-			
 			if (self::$_result) {
 				self::$_insertId = (!empty(self::$_con->insert_id)) ? self::$_con->insert_id : false;
 				
@@ -86,6 +86,18 @@
 					self::$_con->commit();	
 				}
 				
+				$time_end = microtime(true);
+				$time = $time_end - $time_start;
+				self::$_timeExec[] = ['time' => $time, 'sql' => $_sql];
+				uasort(self::$_timeExec, ['self', "cmp"]); 
+				self::$_timeExec['totalTimeRequest'] = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
+
+				$totalTimeExecDb = 0;
+				foreach (self::$_timeExec as $value) {
+					$totalTimeExecDb += $value['time'];
+				}
+				self::$_timeExec['totalTimeExecDb'] = $totalTimeExecDb;
+
 				$return = strtolower($return);
 				
 				if ($return == 'boolean') {
@@ -134,7 +146,7 @@
 		*/
 		static public function autocommit($autocommit) {
 			if ($autocommit) {
-				self::$_autoCommit = false;
+				self::$_autoCommit = true;
 				self::$_con->autocommit(true);
 			} else {
 				self::$_autoCommit = false;
@@ -190,5 +202,9 @@
 				self::$_con->close();
 				self::$_con = null;
 			}
+		}
+		
+		static public function cmp($a, $b) {
+			return ($a["time"] < $b["time"]) ? 1 : (($a["time"] == $b["time"]) ? 0: -1);
 		}
 	}
