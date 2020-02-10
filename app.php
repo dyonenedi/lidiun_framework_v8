@@ -15,6 +15,7 @@
 	class App
 	{
 		// CONF
+		public static $title;
 		public static $preset;
 		public static $environment;
 		public static $database;
@@ -69,7 +70,15 @@
 		#############################################
 
 		public static function setTitle($title) {
-			self::$preset['title'] = $title;
+			self::$title = $title;
+		}
+
+		public static function getTitle() {
+			if (!empty(self::$title)) {
+				return self::$title;
+			} else {
+				return self::$controller;
+			}
 		}
 
 		public static function setDescription($description) {
