@@ -19,6 +19,9 @@
 		private static $_action;
 
 		public static function load() {
+			// Autoloads
+			Autoload::includePath('plugin');
+
 			// Run Global Render
 			self::runGlobalRende();
 
@@ -35,8 +38,6 @@
 		private static function runGlobalRende(){
 			$path = Path::getPath();
 			if (file_exists($path['controller'] . 'global_controller.php')) {
-				Autoload::includePath('plugin');
-				Autoload::includePath('controller');
 				$globalController = 'global_controller';
 				$globalController = new $globalController;
 				$globalcontroller = null;
@@ -45,8 +46,6 @@
 		
 		private static function runController(){
 			self::$_controller = Request::getController();
-			Autoload::includePath('controller' . SEPARATOR . self::$_controller);
-
 			$controller = self::$_controller.'_controller';
 			if (class_exists($controller)) {
 				$Controler = New $controller;

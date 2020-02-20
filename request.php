@@ -88,10 +88,10 @@
 
 		private static function _setController(){
 			if (empty(self::$_controller)) {
-				$controller = strtolower(self::$_parameter[0]);
+				$controller = strtolower(trim(self::$_parameter[0]));
 				$path = Path::getPath();
 				$controllerPath = $path['controller'];
-				if (file_exists($controllerPath . $controller . SEPARATOR . self::$_parameter[0] . '_controller.php')) {
+				if (file_exists($controllerPath . $controller . '_controller.php')) {
 					self::$_controller = $controller;
 					self::unsetParameter(0);
 				} else {
@@ -103,7 +103,7 @@
 		}
 
 		private static function _setAction(){
-			Autoload::includePath('controller' . SEPARATOR . self::$_controller);
+			Autoload::includePath('controller');
 			Autoload::includePath('view' . SEPARATOR . self::$_controller);
 			if (empty(self::$_action) && !empty(self::$_parameter[0])) {
 				$method = strtolower(self::$_parameter[0]);
