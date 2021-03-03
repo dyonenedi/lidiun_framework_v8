@@ -93,7 +93,9 @@
 
 				$totalTimeExecDb = 0;
 				foreach (self::$_timeExec as $value) {
-					$totalTimeExecDb += $value['time'];
+					if (!empty($value['time'])) {
+						$totalTimeExecDb += $value['time'];
+					}
 				}
 				self::$_timeExec['totalTimeExecDb'] = $totalTimeExecDb;
 
