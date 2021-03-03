@@ -113,12 +113,16 @@
 				}
 				
 				if ($return == 'array') {
-					self::$_data = array();
-					$j = 0;
-					while ($row = self::$_result->fetch_assoc()) {
-						self::$_data[] = $row;
+					if (self::$_result->num_rows) {
+						self::$_data = array();
+						$j = 0;
+						while ($row = self::$_result->fetch_assoc()) {
+							self::$_data[] = $row;
+						}
+						return self::$_data;
+					} else {
+						die(self::$_con->error.'<br>'.self::$_sql);
 					}
-					return self::$_data;
 				} 
 
 				if ($return == 'object') {
