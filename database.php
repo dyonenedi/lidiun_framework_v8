@@ -113,17 +113,13 @@
 					}
 				}
 				
-				if ($return == 'array') {
-					if (is_bool(self::$_result) === true) {
-						die(self::$_con->error.'<br>'.self::$_sql);
-					} else {
-						self::$_data = array();
-						$j = 0;
-						while ($row = self::$_result->fetch_assoc()) {
-							self::$_data[] = $row;
-						}
-						return self::$_data;
+				if ($return == 'array' && is_bool(self::$_result) !== true) {
+					self::$_data = array();
+					$j = 0;
+					while ($row = self::$_result->fetch_assoc()) {
+						self::$_data[] = $row;
 					}
+					return self::$_data;
 				} 
 
 				if ($return == 'object') {
