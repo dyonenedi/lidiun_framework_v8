@@ -89,7 +89,6 @@
 				$time_end = microtime(true);
 				$time = $time_end - $time_start;
 				self::$_timeExec[] = ['time' => $time, 'sql' => $_sql];
-				uasort(self::$_timeExec, ['self', "cmp"]); 
 				self::$_timeExec['totalTimeRequest'] = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
 
 				$totalTimeExecDb = 0;
@@ -206,9 +205,5 @@
 				self::$_con->close();
 				self::$_con = null;
 			}
-		}
-		
-		static public function cmp($a, $b) {
-			return ($a["time"] < $b["time"]) ? 1 : (($a["time"] == $b["time"]) ? 0: -1);
 		}
 	}
