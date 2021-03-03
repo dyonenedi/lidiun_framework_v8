@@ -113,15 +113,15 @@
 				}
 				
 				if ($return == 'array') {
-					if (self::$_result->num_rows) {
+					if (is_bool(self::$_result) === true) {
+						die(self::$_con->error.'<br>'.self::$_sql);
+					} else {
 						self::$_data = array();
 						$j = 0;
 						while ($row = self::$_result->fetch_assoc()) {
 							self::$_data[] = $row;
 						}
 						return self::$_data;
-					} else {
-						die(self::$_con->error.'<br>'.self::$_sql);
 					}
 				} 
 
