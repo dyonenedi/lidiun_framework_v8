@@ -42,7 +42,7 @@
 			self::$_url['domain']   = $domain;
 			self::$_url['host']     = $host;
 			self::$_url['port']     = $port;
-			self::$_url['base']     = $protocol . $host . $port . '/';
+			self::$_url['base']     = $protocol . $host . ((Conf::$_conf['preset']['server'] == 'developer') ? $port : "") . '/';
 			self::$_url['uri']      = $uri;
 			self::$_url['full']     = $url;
 		}
