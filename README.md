@@ -1,4 +1,4 @@
-# Lidiun Framework v7
+# Lidiun Framework v8
 A PHP Framework light and siple for simple applications.  
 ![PHP Version](https://img.shields.io/badge/PHP-7.3-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -7,7 +7,7 @@ A PHP Framework light and siple for simple applications.
 - Created Date: **10/02/2019**  
 - Changes from last version: 
 **Framework now load a new class called App**.  
-![PHP Version](https://img.shields.io/badge/Lidiun--V6-red) ![=>](https://img.shields.io/badge/%3D%3E-gray) ![PHP Version](https://img.shields.io/badge/Lidiun--V7-green)
+![PHP Version](https://img.shields.io/badge/Lidiun--V7-red) ![=>](https://img.shields.io/badge/%3D%3E-gray) ![PHP Version](https://img.shields.io/badge/Lidiun--V8-green)
 
 ## About
 The **Lidiun Framework** is a PHP framework created to 
@@ -16,8 +16,8 @@ help get easy to make php applications. It's has other versions shows it's devel
 
 ## Install
 ```bash
-git clone https://github.com/dyonenedi/lidiun_framework_v7.git
-cd lidiun-v7
+git clone https://github.com/dyonenedi/lidiun_framework_v8.git
+cd lidiun-v8
 ```
 
 ## Owner
