@@ -17,7 +17,7 @@ help get easy to make php applications. It's has other versions shows it's devel
 ## Install
 ```bash
 git clone https://github.com/dyonenedi/lidiun_framework_v8.git
-cd lidiun-v8
+cd lidiun_framework_v8
 ```
 
 ## Owner
